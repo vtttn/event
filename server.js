@@ -24,8 +24,7 @@ var event = [
 	"website": "https://www.facebook.com/pg/magazineartmarket/about/",
 	"admission info": "free",
 	"photos": "none",
-	"going not going": true,
-	"poster info": "anonymous",
+	"flag": "35",
 } ,
 {
 	"id": "2",
@@ -52,8 +51,7 @@ var event = [
 	"website": "http://www.footprintstofitness.com/calendar-hhh/pilates-parleaux-20170710",
 	"admission info": "free",
 	"photos": "none",
-	"going not going": true,
-	"poster-info": "anonymous",
+	"flag": "10",
 },
 {
 	"id": "3",
@@ -80,8 +78,7 @@ var event = [
 	"website": "http://bastilledaynola.com/bastilledaynola/",
 	"admission info": "$125.00",
 	"photos": "none",
-	"going not going": true,
-	"poster-info": "anonymous",
+	"flag": "25",
 },
 
 
@@ -111,9 +108,14 @@ app.listen(port, function(err) {
 });
 
 
-app.get('/new-event', function(request, response) {  
+app.get('/', function(request, response) {  
   response.send(event);
   console.log('route succesfully getting hit');
+
 });
 
+app.post('/new-event', function(request, response) { 
+	response.send(request.body); 
+  console.log(request.body);
+});
 
