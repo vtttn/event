@@ -1,21 +1,11 @@
 {
-	"title": 
-	"type of event": 
-	"description":
-	"location":
-	"time":
-		{
-		"start time":
-		"end time":
-		}
-	"date":
-		{
-		"start date":
-		"end date":
-		}
-	"age restrictions": 
-	"website":
-	"addmission info":
-	"photos":
-	"going not going":
+  "name": "kerry-vicky-event-app",
+  "version": "1.0.0",
+  "description": "new orleans event mapper",
+  "main": "server.js",
+  "author": "Kerry + Vicky",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
 }
