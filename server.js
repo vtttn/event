@@ -115,7 +115,7 @@ app.get('/', function(request, response) {
 });
 
 app.post('/new-event', function(request, response) { 
-	response.send(request.body); 
-  console.log(request.body);
+	event.push(request.body); 
+	response.send(event);
 });
 
