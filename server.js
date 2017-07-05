@@ -95,6 +95,12 @@ var event = [
 const express = require('express') // importing it into our server  
 const app = express()  // bringing it in
 const port = 3000 // new javascript. same as var
+const bodyParser = require('body-parser')
+
+
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 app.listen(port, function(err) {  
   if (err) {
@@ -105,9 +111,9 @@ app.listen(port, function(err) {
 });
 
 
-
-app.get('/', function(request, response) {  
-  response.send(event1);
+app.get('/new-event', function(request, response) {  
+  response.send(event);
   console.log('route succesfully getting hit');
 });
+
 
