@@ -25,6 +25,7 @@ var event1 = [
 	"admission info": "free",
 	"photos": "none",
 	"going not going": true,
+	"poster info": "anonymous",
 } ]
 
 
