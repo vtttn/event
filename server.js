@@ -22,7 +22,7 @@ var event = [
 		},
 	"age restrictions": false,
 	"website": "https://www.facebook.com/pg/magazineartmarket/about/",
-	"admission info": "free",
+	"admission": "0",
 	"photos": "none",
 	"flag": "35",
 } ,
@@ -49,7 +49,7 @@ var event = [
 		},
 	"age-restrictions": false,
 	"website": "http://www.footprintstofitness.com/calendar-hhh/pilates-parleaux-20170710",
-	"admission info": "free",
+	"admission": "0",
 	"photos": "none",
 	"flag": "10",
 },
@@ -76,7 +76,7 @@ var event = [
 		},
 	"age-restrictions": true,
 	"website": "http://bastilledaynola.com/bastilledaynola/",
-	"admission info": "$125.00",
+	"admission": "$125.00",
 	"photos": "none",
 	"flag": "25",
 },
@@ -118,4 +118,36 @@ app.post('/new-event', function(request, response) {
 	event.push(request.body); 
 	response.send(event);
 });
+
+app.get('/freeAdmission', function(request, response) {  
+    var result;
+
+    for(i = 0; i < event.length; i++){
+		
+	if (event[i].admission == 0){
+		 return result = event[i];
+		 // looping through all event to check if the value is equal to 0 and returning the whole event object
+	} else {
+		return null;
+		}
+	}
+	
+	response.send(result);
+});  
+
+
+
+// function filterAdmissionFree() {
+//     var result = [];
+
+//     for(i = 0; i < event.length; i++){
+//     	var admission = parseInt(event[i].admission);
+//     	if (event[i].admission == 0){
+//     		return result;
+//     	} else {
+//     		return null;
+//     	}
+//     }
+// };
+
 
