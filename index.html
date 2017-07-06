@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<title>New Orleans Event Mapper</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+</head>
+
+<body>
+
+<h1> List of Events</h1>
+<div id="eventList">
+</div>
+
+
+
+	<script>
+	// $.ajax({
+	//   dataType: "json",
+	//   url: 'http://localhost:3000/all-event',
+	//   type: 'GET',
+	//   success: function(data){
+	//   	$('#eventList').append(data);
+	//   },
+	//   headers: {
+	// 	'Access-Control-Allow-Origin': '*'
+	// 	}
+
+	// });
+
+	$.get('http://localhost:3000/all-event', function(data){
+		console.log(data);
+        $('#eventList').append(JSON.stringify(data));
+    })
+
+	
+	</script>
+
+</body>
+
+</html>
