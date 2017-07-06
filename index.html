@@ -12,39 +12,39 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 
+        <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
 <h1> List of Events</h1>
-<div id="eventList">
+<div class="container" id="eventList">
 </div>
 
 
 
 	<script>
-	// $.ajax({
-	//   dataType: "json",
-	//   url: 'http://localhost:3000/all-event',
-	//   type: 'GET',
-	//   success: function(data){
-	//   	$('#eventList').append(data);
-	//   },
-	//   headers: {
-	// 	'Access-Control-Allow-Origin': '*'
-	// 	}
-
-	// });
 
 	$.get('http://localhost:3000/all-event', function(data){
 		var el ="";
 		for( var i = 0; i < data.length; i++){
-		el+="<h3>"+data[i].title+"</h3><p>"+data[i].type+"</p>";
-		}
+		el+="<h3>"+data[i].title+"</h3><p>"+data[i].type+"</p><p>"+data[i].description+"</p><p>"+data[i].location.street+"<br>"+data[i].location.city+", "+data[i].location.state+" "+data[i].location.zip+"</p><p>"+data[i].date.startDate+" - "+data[i].date.endDate+"</p><p>"+data[i].time.startTime+" to "+data[i].time.endTime+"</p><p>Age Restriction: "+data[i].ageRestriction+"</p><p>"+data[i].website+"</p><p>Admission Price: $"+data[i].admission+"</p><p>Photos: "+data[i].photos+"</p><p>Flaggers: "+data[i].flag+"</p>";
+		} 
+
+
+		
 		$('#eventList').append(el);
 
 		// console.log(data);
-  //       $('#eventList').append(JSON.stringify(data));
+        // $('#eventList').append(JSON.stringify(data));
     })
 
 	

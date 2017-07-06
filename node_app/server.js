@@ -12,15 +12,15 @@ var event = [
 	},
 	"date":
 		{
-		"start date": "July 7, 2017",
-		"end date": "July 7, 2017",
+		"startDate": "July 7, 2017",
+		"endDate": "July 7, 2017",
 		},
 	"time":
 		{
-		"start time": "4:00 PM",
-		"end time": "6:00 PM",
+		"startTime": "4:00 PM",
+		"endTime": "6:00 PM",
 		},
-	"age restrictions": false,
+	"ageRestriction": false,
 	"website": "https://www.facebook.com/pg/magazineartmarket/about/",
 	"admission": "0",
 	"photos": "none",
@@ -39,15 +39,15 @@ var event = [
 	},
 	"date":
 		{
-		"start-date": "July 10, 2017",
-		"end-date": "July 10, 2017",
+		"startDate": "July 10, 2017",
+		"endDate": "July 10, 2017",
 		},
 	"time":
 		{
-		"start-time": "6:30 PM",
-		"end-time": "7:30 PM",
+		"startTime": "6:30 PM",
+		"endTime": "7:30 PM",
 		},
-	"age-restrictions": false,
+	"ageRestriction": false,
 	"website": "http://www.footprintstofitness.com/calendar-hhh/pilates-parleaux-20170710",
 	"admission": "0",
 	"photos": "none",
@@ -66,17 +66,17 @@ var event = [
 	},
 	"date":
 		{
-		"start-date": "July 14, 2017",
-		"end-date": "July 14, 2017",
+		"startDate": "July 14, 2017",
+		"endDate": "July 14, 2017",
 		},
 	"time":
 		{
-		"start-time": "7:00 PM",
-		"end-time": "9:30 PM",
+		"startTime": "7:00 PM",
+		"endTime": "9:30 PM",
 		},
-	"age-restrictions": true,
+	"ageRestriction": true,
 	"website": "http://bastilledaynola.com/bastilledaynola/",
-	"admission": "$125.00",
+	"admission": "125.00",
 	"photos": "none",
 	"flag": "25",
 },
@@ -103,14 +103,13 @@ app.listen(port, function(err) {
   if (err) {
     return console.log('something bad happened', err)
   }
-
   console.log(`Magic is happening on ${port}`) // also can use + port (the variable/const)
 });
 
 
 app.get('/all-event', function(request, response) {  
   response.send(event);
-  console.log('route succesfully getting hit',event);
+  console.log('route succesfully getting hit');
 
 });
 
