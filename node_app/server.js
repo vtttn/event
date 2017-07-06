@@ -2,7 +2,7 @@ var event = [
 {
 	"id": "1",
 	"title": "Magazine Street Art Market",
-	"type": "art",
+	"type": ["art"],
 	"description": "Welcome to the magical Magazine St. Art Market! We aim to bring the best local artists & craftsmen to Magazine Street, and inspire new art collectors",
 	"location": {
 		"street": "3336 Magazine St",
