@@ -37,8 +37,14 @@
 	// });
 
 	$.get('http://localhost:3000/all-event', function(data){
-		console.log(data);
-        $('#eventList').append(JSON.stringify(data));
+		var el ="";
+		for( var i = 0; i < data.length; i++){
+		el+="<h3>"+data[i].title+"</h3><p>"+data[i].type+"</p>";
+		}
+		$('#eventList').append(el);
+
+		// console.log(data);
+  //       $('#eventList').append(JSON.stringify(data));
     })
 
 	
