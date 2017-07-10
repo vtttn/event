@@ -115,7 +115,7 @@ const mongoose = require('mongoose')
 
 
 
-mongoose.connect('MONGODB_URI', function (error) {
+mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
@@ -163,20 +163,20 @@ app.get('/freeAdmission', function(request, response) {
 
 
 
-app.get('/api/event', function (request, response){
-	//http://mongoosejs.com.docs/api.html#query_query-find
-	event.find( function( err, event){
-		res.json(200,event);
-	});
-})
+// app.get('/api/event', function (request, response){
+// 	//http://mongoosejs.com.docs/api.html#query_query-find
+// 	event.find( function( err, event){
+// 		res.json(200,event);
+// 	});
+// })
 
-app.post('/api/addEvent', function (request, response){
-	var addEvent = new Event ();
-	addEvent = {
-		"key": "value",
-		"otherKey": "value", 
-	}
-})
+// app.post('/api/addEvent', function (request, response){
+// 	var addEvent = new Event ();
+// 	addEvent = {
+// 		"key": "value",
+// 		"otherKey": "value", 
+// 	}
+// })
 
 
 // function filterAdmissionFree() {
