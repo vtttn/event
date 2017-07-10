@@ -8,23 +8,23 @@ var event = [
 		"street": "3336 Magazine St",
 		"city": "New Orleans",
 		"state": "LA",
-		"zip": "70115",
+		"zip": "70115"
 	},
 	"date":
 		{
 		"startDate": "July 7, 2017",
-		"endDate": "July 7, 2017",
+		"endDate": "July 7, 2017"
 		},
 	"time":
 		{
 		"startTime": "4:00 PM",
-		"endTime": "6:00 PM",
+		"endTime": "6:00 PM"
 		},
 	"ageRestriction": false,
 	"website": "https://www.facebook.com/pg/magazineartmarket/about/",
 	"admission": "0",
 	"photos": "none",
-	"flag": "35",
+	"flag": "35"
 } ,
 {
 	"id": "2",
@@ -35,23 +35,23 @@ var event = [
 		"street": "634 Lesseps Street",
 		"city": "New Orleans",
 		"state": "LA",
-		"zip": "70117",
+		"zip": "70117"
 	},
 	"date":
 		{
 		"startDate": "July 10, 2017",
-		"endDate": "July 10, 2017",
+		"endDate": "July 10, 2017"
 		},
 	"time":
 		{
 		"startTime": "6:30 PM",
-		"endTime": "7:30 PM",
+		"endTime": "7:30 PM"
 		},
 	"ageRestriction": false,
 	"website": "http://www.footprintstofitness.com/calendar-hhh/pilates-parleaux-20170710",
 	"admission": "0",
 	"photos": "none",
-	"flag": "10",
+	"flag": "10"
 },
 {
 	"id": "3",
@@ -62,23 +62,23 @@ var event = [
 		"street": "813 Bienville Street",
 		"city": "New Orleans",
 		"state": "LA",
-		"zip": "70112",
+		"zip": "70112"
 	},
 	"date":
 		{
 		"startDate": "July 14, 2017",
-		"endDate": "July 14, 2017",
+		"endDate": "July 14, 2017"
 		},
 	"time":
 		{
 		"startTime": "7:00 PM",
-		"endTime": "9:30 PM",
+		"endTime": "9:30 PM"
 		},
 	"ageRestriction": true,
 	"website": "http://bastilledaynola.com/bastilledaynola/",
 	"admission": "125.00",
 	"photos": "none",
-	"flag": "25",
+	"flag": "25"
 },
 
 
@@ -115,7 +115,7 @@ const mongoose = require('mongoose')
 
 
 
-mongoose.connect('mongodb://example:example@ds053312.mongolab.com:53312/todolist', function (error) {
+mongoose.connect('MONGODB_URI', function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
@@ -161,6 +161,22 @@ app.get('/freeAdmission', function(request, response) {
 	response.send(result);
 });  
 
+
+
+app.get('/api/event', function (request, response){
+	//http://mongoosejs.com.docs/api.html#query_query-find
+	event.find( function( err, event){
+		res.json(200,event);
+	});
+})
+
+app.post('/api/addEvent', function (request, response){
+	var addEvent = new Event ();
+	addEvent = {
+		"key": "value",
+		"otherKey": "value", 
+	}
+})
 
 
 // function filterAdmissionFree() {
