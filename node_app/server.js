@@ -93,6 +93,33 @@ const express = require('express') // importing it into our server
 const app = express()  // bringing it in
 const port = 3000 // new javascript. same as var
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+
+// Mongoose Schema Definition
+	Schema = new mongoose.Schema({
+		id      : String,
+		title	: String,
+		type	: String,
+		description: String,
+		location: String,
+		date 	: String,
+		time 	: String,
+		ageRestriction: Boolean,
+		website	: String,
+		admission: String,
+		photos 	: String,
+		flag	: String,
+	})
+
+	event = mongoose.model('event', Schema);
+
+
+
+mongoose.connect('mongodb://example:example@ds053312.mongolab.com:53312/todolist', function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
