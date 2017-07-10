@@ -97,30 +97,30 @@ const mongoose = require('mongoose')
 
 
 // blocking out Mongoose to have Postman work
-// // Mongoose Schema Definition
-// 	Schema = new mongoose.Schema({
-// 		id      : String,
-// 		title	: String,
-// 		type	: String,
-// 		description: String,
-// 		location: String,
-// 		date 	: String,
-// 		time 	: String,
-// 		ageRestriction: Boolean,
-// 		website	: String,
-// 		admission: String,
-// 		photos 	: String,
-// 		flag	: String,
-// 	})
+// Mongoose Schema Definition
+	Schema = new mongoose.Schema({
+		id      : String,
+		title	: String,
+		type	: Array,
+		description: String,
+		location: String,
+		date 	: String,
+		time 	: String,
+		ageRestriction: Boolean,
+		website	: String,
+		admission: String,
+		photos 	: String,
+		flag	: String,
+	})
 
-// 	event = mongoose.model('event', Schema);
+	event = mongoose.model('event', Schema);
 
 
 
-// mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
-//     if (error) console.error(error);
-//     else console.log('mongo connected');
-// });
+mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
 
 
 
