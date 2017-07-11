@@ -81,13 +81,12 @@ var event = [
 	"flag": "25"
 },
 
-
-
 ] // end event array
 
 
+// var userAccounts = []
 
-
+// 
 
 const express = require('express') // importing it into our server  
 const app = express()  // bringing it in
@@ -95,26 +94,13 @@ const port = 3000 // new javascript. same as var
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-
-// blocking out Mongoose to have Postman work
-// Mongoose Schema Definition
 	Schema = new mongoose.Schema({
-		id      : String,
-		title	: String,
-		type	: Array,
-		description: String,
-		location: String,
-		date 	: String,
-		time 	: String,
-		ageRestriction: Boolean,
-		website	: String,
-		admission: String,
-		photos 	: String,
-		flag	: String,
-	})
-
-	event = mongoose.model('event', Schema);
-
+		firstName		: String,
+		lastName		: String,
+		email			: String,
+		password 		: String,
+		confirmPassword : String
+	}, collection: 'accounts'});
 
 
 mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
@@ -123,10 +109,16 @@ mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.
 });
 
 
+var userAccounts = mongoose.model('accounts', Schema)
+
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+// to know that your node sever.js is running
 
 app.listen(port, function(err) {  
   if (err) {
@@ -135,17 +127,81 @@ app.listen(port, function(err) {
   console.log(`Magic is happening on ${port}`) // also can use + port (the variable/const)
 });
 
+// grab all lists of events 
 
 app.get('/all-event', function(request, response) {  
   response.send(event);
   console.log('route succesfully getting hit');
-
 });
+
+
+// a new event is being created and pushed into existing event array
 
 app.post('/new-event', function(request, response) { 
 	event.push(request.body); 
 	response.send(event);
 });
+
+
+// a new account is created and pushed into existing userAccounts array
+
+app.post('/create-Account', function(request,response){
+	userAccounts.push(request.body);
+	response.send(userAccounts);
+})
+
+
+
+
+// blocking out Mongoose to have Postman work
+// Mongoose Schema Definition
+// 	Schema = new mongoose.Schema({
+// 		id      : String,
+// 		title	: String,
+// 		type	: Array,
+// 		description: String,
+// 		location: String,
+// 		date 	: String,
+// 		time 	: String,
+// 		ageRestriction: Boolean,
+// 		website	: String,
+// 		admission: String,
+// 		photos 	: String,
+// 		flag	: String,
+// 	})
+
+// 	event = mongoose.model('event', Schema);
+
+
+
+// mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
+//     if (error) console.error(error);
+//     else console.log('mongo connected');
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// filtering free Admission 
 
 app.get('/freeAdmission', function(request, response) {  
     var result;
@@ -162,6 +218,7 @@ app.get('/freeAdmission', function(request, response) {
 	
 	response.send(result);
 });  
+
 
 
 

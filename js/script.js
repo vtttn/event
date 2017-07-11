@@ -31,3 +31,16 @@
       return date;
     }
   } );
+
+
+  $('#createAccount').click(function(){
+    // var newAccount = {
+    //   "firstName": $('#firstName').val(),
+    //   "lastName": $('#lastName').val(),
+    //   "signInEmail": $('#signInEmail').val(),
+    //   "createPassword": $('#createPassword').val(),
+    //   "retypePassword": $('#retypePassword').val(),
+    // }
+
+    console.log('ouch');
+  })
