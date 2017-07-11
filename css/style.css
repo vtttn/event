@@ -12,3 +12,16 @@
 .filterSearch{
 	margin-bottom: 15px;
 }
+
+.radioline{
+	padding-top: 0px !important;
+}
+
+.adminAdd{
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+.createForm {
+	border-radius: 0px;
+}
