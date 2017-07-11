@@ -84,7 +84,8 @@ var event = [
 ] // end event array
 
 
-// var userAccounts = []
+
+// var userAccounts = [ ]
 
 // 
 
@@ -94,32 +95,14 @@ const port = 3000 // new javascript. same as var
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-	Schema = new mongoose.Schema({
-		firstName		: String,
-		lastName		: String,
-		email			: String,
-		password 		: String,
-		confirmPassword : String
-	}, collection: 'accounts'});
-
-
-mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
-    if (error) console.error(error);
-    else console.log('mongo connected');
-});
-
-
-var userAccounts = mongoose.model('accounts', Schema)
-
-
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
 
 // to know that your node sever.js is running
-
 app.listen(port, function(err) {  
   if (err) {
     return console.log('something bad happened', err)
@@ -127,38 +110,71 @@ app.listen(port, function(err) {
   console.log(`Magic is happening on ${port}`) // also can use + port (the variable/const)
 });
 
-// grab all lists of events 
 
+// connecting to MongoDB
+mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
+
+
+// new MongoDB schema for createAccount
+Schema = new mongoose.Schema({
+	firstName		: String,
+	lastName		: String,
+	signInEmail		: String,
+	password 		: String,
+	confirmPassword : String
+},{ collection: 'accounts'});
+
+var userAccounts = mongoose.model('accounts', Schema);
+
+// a new account is created and pushed into existing userAccounts array in MongoDB
+app.post('/create-Account', function(request,response){
+	var accounts = new userAccounts(request.body);
+
+	accounts.save(function (){
+			response.json(accounts);
+		}
+	)
+});
+
+// grab the var event from server.js
 app.get('/all-event', function(request, response) {  
   response.send(event);
   console.log('route succesfully getting hit');
 });
 
 
-// a new event is being created and pushed into existing event array
+// grab the var event from MongoDB
+// app.get('/all-event', function(request, response) {  
+//   event.find();
+// });
 
+
+// a new event is being created and pushed into existing event array
 app.post('/new-event', function(request, response) { 
 	event.push(request.body); 
 	response.send(event);
 });
 
 
-// a new account is created and pushed into existing userAccounts array
-
-app.post('/create-Account', function(request,response){
-	userAccounts.push(request.body);
-	response.send(userAccounts);
-})
 
 
 
+// a new account is created and pushed into existing userAccounts array in server.js
+
+// app.post('/create-Account', function(request,response){
+// 	userAccounts.push(request.body);
+// 	response.send(userAccounts);
+// });
 
 // blocking out Mongoose to have Postman work
 // Mongoose Schema Definition
 // 	Schema = new mongoose.Schema({
 // 		id      : String,
 // 		title	: String,
-// 		type	: Array,
+// 		type	: [String],
 // 		description: String,
 // 		location: String,
 // 		date 	: String,
