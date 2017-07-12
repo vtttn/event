@@ -1,5 +1,11 @@
 .filterHeader {
-	height: 400px;
+	height: 100vh; 
+	/*vh means viewport height*/
+	background-color: #e0e0e0;
+	width:auto;
+	background-image: url(../img/cover.png);
+	background-size: cover;
+	background-position: center;
 }
 .hideIt{
 	display: none;
@@ -11,6 +17,16 @@
 
 .filterSearch{
 	margin-bottom: 15px;
+}
+
+.filterSearchForm {
+	border: none;
+	border-bottom: 2px solid #555;
+	border-radius: 0px;
+	background-color: rgba(255,255,255,.5);
+	box-shadow: none;
+	transition: none;
+	color: #000;
 }
 
 .radioline{
