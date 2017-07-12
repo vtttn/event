@@ -24,7 +24,7 @@ var event = [
 	"website": "https://www.facebook.com/pg/magazineartmarket/about/",
 	"admission": "0",
 	"photos": "none",
-	"flag": "35"
+	"fleur": "35"
 } ,
 {
 	"id": "2",
@@ -51,7 +51,7 @@ var event = [
 	"website": "http://www.footprintstofitness.com/calendar-hhh/pilates-parleaux-20170710",
 	"admission": "0",
 	"photos": "none",
-	"flag": "10"
+	"fleur": "10"
 },
 {
 	"id": "3",
@@ -78,7 +78,7 @@ var event = [
 	"website": "http://bastilledaynola.com/bastilledaynola/",
 	"admission": "125.00",
 	"photos": "none",
-	"flag": "25"
+	"fleur": "25"
 },
 
 ] // end event array
@@ -102,13 +102,23 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 
-// to know that your node sever.js is running
-app.listen(port, function(err) {  
+// to know that your node server.js is running
+app.listen( port, function(err) {  
   if (err) {
     return console.log('something bad happened', err)
   }
   console.log(`Magic is happening on ${port}`) // also can use + port (the variable/const)
 });
+
+
+// heroku port
+app.listen( process.env.PORT || 5000, function(err) {  
+  if (err) {
+    return console.log('something bad happened', err)
+  }
+  console.log(`Magic is happening on ${process.env.PORT}`) // also can use + port (the variable/const)
+});
+
 
 
 // connecting to MongoDB
@@ -139,17 +149,47 @@ app.post('/create-Account', function(request,response){
 	)
 });
 
+// new MongoDB schema for allEvent
+eventSchema = new mongoose.Schema({
+		title		: String,
+		type		: [String],
+		description	: String,
+		location	: { street: String, city: String, state: String, zip: String },
+		date 		: { startDate: String, endDate: String },
+		time 		: { startTime: String, endTime: String },
+		ageRestriction: String,
+		website		: String,
+		admission 	: String,
+		photos 		: String,
+		fleur		: String,
+},{ collection: 'events'});
+
+var Events = mongoose.model('events', eventSchema);
+
 // grab the var event from server.js
 app.get('/all-event', function(request, response) {  
-  response.send(event);
-  console.log('route succesfully getting hit');
+ 	Events.find( function(){
+ 		response.json(Events);
+ 	});
 });
 
 
-// grab the var event from MongoDB
+// grab the collection event from MongoDB
 // app.get('/all-event', function(request, response) {  
 //   event.find();
 // });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // a new event is being created and pushed into existing event array
