@@ -157,51 +157,51 @@
 
 <!-- JUMBOTRON -->
 
-				<div class="jumbotron">
-					<div class="container">
-						<h1>Contact Fleurish</h1>
-								<div class="row">
-									<div class="col-lg-6">
-								
-									</div>
-								</div>
-					</div>
-				</div>
+    <div class="jumbotron">
+      <div class="container">
+      <h1>Contact Fleurish</h1>
+        <div class="row">
+          <div class="col-lg-6"></div>
+        </div>
 
 <!-- / JUMBOTRON -->
 
-<!-- start Contact Form -->
+<h3>Have a question? Tell us who you are so we can help!</h3>
 
-			<div class="container">
-				<h3>Have a question? Tell us who you are so we can help!</h3>
-				<h8>* all fields required</h8>
+<form id="contactUsForm" action="">
 
-				<h6>*FULL NAME</h6>
-					<input id="input1" type="text" name="userName">
+<h6><strong>*FULL NAME</strong></h6>
 
-				<h6>*EMAIL</h6>
-					<input id="input2" type="text" name="email">
+<input id="input1" type="text" name="userName" placeholder="enter your full name here">
 
-				<h6>*COUNTRY</h6>
-					<select id="input3" name="Country">
-						<option value="blank" selected>------</option>
-						<option value="USA">United States</option>
-					</select>
+<h6><strong>*EMAIL</strong></h6>
 
-				<h6>*STATE</h6>
-					<select id="input4" name="State">
-						<option value="blank" selected>------</option>
-						<option value="Louisiana">Louisiana</option>
-					</select>
+<input id="input2" type="text" name="email" placeholder="enter your email here">
 
-				<h6>*MESSAGE</h6>
-					<input id="input5" type="text" name="message">
+<h6><strong>*COUNTRY</strong></h6>
 
-				<br />
-				<br />
+<select id="input3" name="Country">
+  <option value="blank" selected>------</option>
+  <option value="USA">United States</option>
+</select>
 
-				<p><a class="btn btn-primary btn-lg" href="\event\contact.html" role="button" id="contactButton">Submit</a></p>
-			</div>
+<h6><strong>*STATE</strong></h6>
+
+<select id="input4" name="State">
+  <option value="blank" selected>------</option>
+  <option value="Louisiana">Louisiana</option>
+</select>
+
+<h6><strong>*MESSAGE</strong></h6>
+
+<textarea class="form-control" rows="3" placeholder="What do you want to say?"></textarea>
+
+<br />
+<br />
+
+<p><a class="btn btn-primary btn-lg" href="#" role="button" id="contactButton">Submit</a></p>
+
+</form>
 
 
 
@@ -209,34 +209,53 @@
 
 		<script>
 
-			$('#contactButton').click(function(){				
-				var contactForm=[
-					{
-						"input1": "",
-						"input2": "",
-						"input3": "",
-						"input4": "",
-						"input5": "",
-					}
-				];
-				
-				console.log($('#input1').val());
-				console.log($('#input2').val());
-				console.log($('#input3').val());
-				console.log($('#input4').val());
-				console.log($('#input5').val());
+$('#contactButton').click(function(){
+  
+var contactForm=[
+{
+  "input1": "",
+  "input2": "",
+  "input3": "",
+  "input4": "",
+  "input5": "",
+  }
+];
+  
+  console.log($('#input1').val());
+  console.log($('#input2').val());
+  console.log($('#input3').val());
+  console.log($('#input4').val());
+  console.log($('#input5').val());
 
-				$.post('url', contactForm, function(err,res){
-							});
-				});
+  $.post('url', contactForm, function(err,res){
 
-		</script>
+  });
 
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  $('#contactUsForm').trigger("reset");
+
+
+});
+
+
+</script>
+
+
+
+<br />
+<br />
+
+<h8>* all fields required</h8>
+
+</div>
+</div>
+
+<!-- START OF SCRIPT -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </body>
 
