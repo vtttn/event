@@ -120,11 +120,11 @@ mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.
 
 // new MongoDB schema for createAccount
 Schema = new mongoose.Schema({
-	firstName		: String,
-	lastName		: String,
-	signInEmail		: String,
-	password 		: String,
-	confirmPassword : String
+	firstName			: String,
+	lastName			: String,
+	signInEmail			: String,
+	password 			: String,
+	confirmPassword		: String
 },{ collection: 'accounts'});
 
 var userAccounts = mongoose.model('accounts', Schema);
