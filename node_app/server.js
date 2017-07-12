@@ -103,12 +103,12 @@ app.use(bodyParser.json());
 
 
 // to know that your node server.js is running
-app.listen( port, function(err) {  
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-  console.log(`Magic is happening on ${port}`) // also can use + port (the variable/const)
-});
+// app.listen( port, function(err) {  
+//   if (err) {
+//     return console.log('something bad happened', err)
+//   }
+//   console.log(`Magic is happening on ${port}`) // also can use + port (the variable/const)
+// });
 
 
 // heroku port
@@ -118,8 +118,6 @@ app.listen( process.env.PORT || 5000, function(err) {
   }
   console.log(`Magic is happening on ${process.env.PORT}`) // also can use + port (the variable/const)
 });
-
-
 
 // connecting to MongoDB
 mongoose.connect('mongodb://heroku_b4j2nktr:gnj5m6pb65s7su7gtaj1ldf8mh@ds153732.mlab.com:53732/heroku_b4j2nktr', function (error) {
@@ -148,6 +146,18 @@ app.post('/create-Account', function(request,response){
 		}
 	)
 });
+
+// get all accounts
+app.get('/all-accounts', function(request, response) {  
+	userAccounts.find({},function(err,todo){
+		if(err){
+			console.log(err)
+		}else{
+			console.log(todo);
+		}
+	});
+});
+
 
 // new MongoDB schema for allEvent
 eventSchema = new mongoose.Schema({
